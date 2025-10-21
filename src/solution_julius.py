@@ -5,11 +5,11 @@ import time
 # Modify the class name to match your student number.
 class r0123456:
 
-    def __init__(self, ouptut_file, mutation_scheme='inversion', mutation_rate=0.35):
+    def __init__(self, ouptut_file, mutation_scheme='inversion', base_mutation_rate=0.3):
         self.reporter = Reporter.Reporter(filename=ouptut_file)
         # mutation_scheme: 'swap', 'inversion', 'scramble', or 'random' (choose per application)
         self.mutation_scheme = mutation_scheme
-        self.mutation_rate = mutation_rate
+        self.base_mutation_rate = base_mutation_rate
 
     # Ordered crossover (OX)
     def ordered_crossover(self, parent_a, parent_b, rng):
@@ -120,7 +120,10 @@ class r0123456:
 
         POP_SIZE = 200
         K_TOURN = 5
-        MUTATION_RATE = self.mutation_rate
+        BASE_MUTATION_RATE = self.base_mutation_rate
+        MUTATION_RATE = BASE_MUTATION_RATE
+        MAX_MUTATION_RATE = 0.9
+        MUTATION_INCREASE = 0.05
         ELITE_COUNT = 2
         MAX_GENERATIONS = 5000
         NO_IMPROVE_GENS = 300
@@ -210,8 +213,11 @@ class r0123456:
                 bestObjective = current_best
                 bestSolutionPerm = current_best_perm
                 no_improve = 0
+                MUTATION_RATE = BASE_MUTATION_RATE  # Reset mutation rate on improvement
             else:
                 no_improve += 1
+                # Increase mutation rate when no improvement
+                MUTATION_RATE = min(MUTATION_RATE + MUTATION_INCREASE, MAX_MUTATION_RATE)
 
             mean_vals = objectives[np.isfinite(objectives)]
             meanObjective = np.mean(mean_vals) if mean_vals.size > 0 else np.inf
