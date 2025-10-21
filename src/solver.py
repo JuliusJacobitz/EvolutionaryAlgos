@@ -4,7 +4,8 @@ import pandas as pd
 import fast_tsp
 
 # Load and clean the CSV
-file_path = "/Users/julius/Library/CloudStorage/GoogleDrive-juliusjacobitz@gmail.com/My Drive/Studium/Master/07_Semester_Leuven/Genetic Algorithms/CodeGroupPhase/src/data/tour250.csv"
+tournumber = 50
+file_path = f"/Users/julius/Library/CloudStorage/GoogleDrive-juliusjacobitz@gmail.com/My Drive/Studium/Master/07_Semester_Leuven/Genetic Algorithms/CodeGroupPhase/src/data/tour{tournumber}.csv"
 dist_matrix = pd.read_csv(file_path, header=None)
 
 # Ensure it's a proper square matrix

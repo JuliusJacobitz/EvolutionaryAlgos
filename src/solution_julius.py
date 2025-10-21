@@ -229,10 +229,10 @@ class r0123456:
         return 0
 
 
-filename = "/Users/julius/Library/CloudStorage/GoogleDrive-juliusjacobitz@gmail.com/My Drive/Studium/Master/07_Semester_Leuven/Genetic Algorithms/CodeGroupPhase/src/data/tour50.csv"
+filename = "/Users/julius/Library/CloudStorage/GoogleDrive-juliusjacobitz@gmail.com/My Drive/Studium/Master/07_Semester_Leuven/Genetic Algorithms/CodeGroupPhase/src/data/tour250.csv"
 
 
 
-folder = "/Users/julius/Library/CloudStorage/GoogleDrive-juliusjacobitz@gmail.com/My Drive/Studium/Master/07_Semester_Leuven/Genetic Algorithms/CodeGroupPhase/src/data/output_julius/50/"
-solver = r0123456(ouptut_file=folder+"tour_50_julius_"+str(int(time.time())).split(".")[0])
+folder = "/Users/julius/Library/CloudStorage/GoogleDrive-juliusjacobitz@gmail.com/My Drive/Studium/Master/07_Semester_Leuven/Genetic Algorithms/CodeGroupPhase/src/data/output_julius/250/"
+solver = r0123456(ouptut_file=folder+"tour_250_julius_"+str(int(time.time())).split(".")[0])
 solver.optimize(filename)

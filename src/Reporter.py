@@ -30,8 +30,11 @@ class Reporter:
 			outFile.write(str(start - self.startTime - self.writingTime) + self.delimiter)
 			outFile.write(str(meanObjective) + self.delimiter)
 			outFile.write(str(bestObjective) + self.delimiter)
-			for i in range(bestSolution.size):
-				outFile.write(str(bestSolution[i]) + self.delimiter)
+			
+
+			for i in range(bestSolution.size-1):
+				outFile.write(str(bestSolution[i]) + "-")
+			outFile.write(str(bestSolution[bestSolution.size-1]))
 			outFile.write('\n')
 			outFile.close()
 
