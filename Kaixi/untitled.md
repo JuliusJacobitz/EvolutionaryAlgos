@@ -1,0 +1,5 @@
+Kaixi's prompt
+
+1. This is the note we took in Exercise session 1, it can be useful. You can also consider the suggested structure you mentioned above:Representation: Generate a Python function that represents a TSP solution as a permutation of city indices.Objective function: Write a function that computes the total length of a TSP tour given a distance matrix and a permutation of cities.Initialization: Create a function that initializes a population of random TSP tours.Selection: Implement tournament selection for choosing parents from a population of TSP tours.Mutation: Write a mutation operator for TSP using swap mutation.Recombination: Implement order crossover (OX) for two TSP tours.Elimination: Design an elimination strategy that keeps the best individuals in the population.Stopping criterion: Add a stopping condition based on a fixed number of generations or time limit.Base on these information, help me make the solution framework and write the code based on the code template.
+
+
