@@ -1,0 +1,41 @@
+
+We are solving the travleing salesman problem on a graph with an genetic algorithm. We are looking for the shortest path between nodes
+
+your data in the given csv is a graph representation by a  nxn  matrix with distances between the nodes in each cell.  If 2 cells are not directly connected, they have a distance of infinite. Its a directed graph.
+
+You have the given code template.
+
+please generate each step of the following exercise:
+
+Generate a representation, the objective function „length“, a simple population initialization, a selection mechanism, one mutation operator, one recombination operator, an elimination mechanism, and a stopping criterion that corresponds to the design that you developed in the first exercise session
+
+representation:
+* a possilbe path representation would be a list with all nodes visited in the circle. As the starting (and endpoint) are always fixed, we can just ignore vertex 1
+
+Initialization: 
+* start with random population of possible paths (easy).
+* it could be worth it to test for feasability (length != inf.) at initialization
+
+
+Selection: 
+* decide on a basic way to do this - we thought about k tournament selection 
+
+
+Variation:
+* Mutation: All basics for permuations
+* Combination: order crossover 
+
+elimination:
+* some form of elitism (always keep top 5 percent)
+* besides that decide on a strategy
+
+
+————
+
+add Insert mutation
+ Swap mutation 
+Inversion Mutation
+ Scramble mutation 
+as optional mutation schemes
+
+—
