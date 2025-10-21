@@ -17,7 +17,7 @@ class r0926887:
         # Create a list of random permutations (tours)
         return [np.random.permutation(num_cities) for _ in range(size)]
 
-    def tournament_selection(self, population, fitnesses, k=3):
+    def tournament_selection(self, population, fitnesses, k=5):
         # Select k individuals randomly and return the best (lowest fitness)
         selected = random.sample(list(zip(population, fitnesses)), k)
         return min(selected, key=lambda x: x[1])[0]
