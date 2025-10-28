@@ -1,4 +1,4 @@
-import Reporter
+from project.GroupPhase.EvolutionaryAlgos.src import Reporter
 import numpy as np
 import random
 import time
