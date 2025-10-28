@@ -373,7 +373,7 @@ class r0926887:
 if __name__ == '__main__':
     # Create an instance of the solver
     solver = r0926887()
-    problem_file = "./src/data/tour250.csv"
+    problem_file = "./src/data/tour500.csv"
 
     if not os.path.exists(problem_file):
         print(f"Error: File '{problem_file}' not found.")
