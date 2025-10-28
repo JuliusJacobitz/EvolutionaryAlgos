@@ -1,5 +1,7 @@
 # info: this requires a fix in Reporter, which changes the delimiter from "," to "-" when writng the cycle
 
+assert False, "This only works with reporter file changed  to use '-' as a delimiter"
+
 import pandas as pd
 import matplotlib.pyplot as plt
 folder = "/Users/julius/Library/CloudStorage/GoogleDrive-juliusjacobitz@gmail.com/My Drive/Studium/Master/07_Semester_Leuven/Genetic Algorithms/CodeGroupPhase/src/data/output_julius/"
