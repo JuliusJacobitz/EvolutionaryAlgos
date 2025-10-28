@@ -1,0 +1,18 @@
+
+# Prompt 1
+
+I wish to design an evolutionary algorithm that attempts to solve the travelling salesman problem.
+
+-> INITIALIZATION : Use random selection to create the initial population
+-> SELECTION : I want K-tournament selection with k=5
+-> MUTATION : Swap mutation
+-> CROSSOVER : I want to go with order crossover with random substring lengths
+
+For ELIMINATION, I want to keep it simple but add 3% elitism
+For the stopping criteria stop if the max generations have been reached or there are no more improvements
+
+
+# Prompt 2
+
+Not getting a good objective value with this algorithm, can you add inversion mutation
+
