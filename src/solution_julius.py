@@ -2,6 +2,7 @@ import Reporter
 import numpy as np
 import time
 
+
 # Modify the class name to match your student number.
 class r0123456:
     def __init__(self, ouptut_file, mutation_scheme='inversion', base_mutation_rate=0.3):
@@ -15,7 +16,7 @@ class r0123456:
         n = parent_a.size
         child = -np.ones(n, dtype=int)
         i, j = sorted(rng.choice(n, size=2, replace=False))
-        child[i:(j+1)] = parent_a[i:(j+1)]
+        child[i:(j + 1)] = parent_a[i:(j + 1)]
         ptr = 0
         for val in parent_b:
             if val in child:
@@ -38,7 +39,7 @@ class r0123456:
         n = individual.size
         i, j = sorted(rng.choice(n, size=2, replace=False))
         mutated = individual.copy()
-        mutated[i:(j+1)] = mutated[i:(j+1)][::-1]
+        mutated[i:(j + 1)] = mutated[i:(j + 1)][::-1]
         return mutated
 
     # Scramble mutation (shuffle elements within a subsequence)
@@ -46,9 +47,9 @@ class r0123456:
         n = individual.size
         i, j = sorted(rng.choice(n, size=2, replace=False))
         mutated = individual.copy()
-        subseq = mutated[i:(j+1)].copy()
+        subseq = mutated[i:(j + 1)].copy()
         rng.shuffle(subseq)
-        mutated[i:(j+1)] = subseq
+        mutated[i:(j + 1)] = subseq
         return mutated
 
     # Apply the selected mutation scheme (or choose randomly if 'random')
@@ -114,8 +115,6 @@ class r0123456:
 
         N = distanceMatrix.shape[0]
         rep_size = N - 1
-
-        
 
         POP_SIZE = 200
         K_TOURN = 5
@@ -233,5 +232,5 @@ tour_number = "50"
 filename = f"/Users/julius/Library/CloudStorage/GoogleDrive-juliusjacobitz@gmail.com/My Drive/Studium/Master/07_Semester_Leuven/Genetic Algorithms/CodeGroupPhase/src/data/tour{tour_number}.csv"
 folder = f"/Users/julius/Library/CloudStorage/GoogleDrive-juliusjacobitz@gmail.com/My Drive/Studium/Master/07_Semester_Leuven/Genetic Algorithms/CodeGroupPhase/src/data/output_julius/{tour_number}/"
 
-solver = r0123456(ouptut_file=folder+f"tour_{tour_number}_"+str(int(time.time())).split(".")[0])
+solver = r0123456(ouptut_file=folder + f"tour_{tour_number}_" + str(int(time.time())).split(".")[0])
 solver.optimize(filename)
