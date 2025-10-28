@@ -65,20 +65,33 @@ This report should be uploaded to Toledo by \deadlineGroup. It must be in the \t
 \ReplaceMe{Which mutation operator(s) did you consider and implement? If they are not from the slides, describe them. Which one did you implement? Why did you choose that one specifically? Do you believe it will introduce sufficient randomness? Can that be controlled with parameters?}
 
 \subsection{Recombination operator}
+We used order crossover, because of its simplicity. It uses a random contiguous block of parent a and all other positions are filled later with parent b in order. 
+The operator is able to combine the best features of both parents since it keeps the order of the permutations. The length of the contiguous block is a random number between 0 and n-1 and is not implemented as a controllable parameter. We make use of selfadaptivity by increasing the mutation rate when no improvement is observed and reset it again upon improvement.
 
 \ReplaceMe{Which recombination operator(s) did you consider? If they are not from the slides, describe them. Which one did you implement? Why did you choose that one specifically? Explain how you believe that this operator can produce offspring that combine the best features from their parents. How does your operator behave if there is little overlap between the parents? Can your recombination be controlled with parameters; what behavior do they change? Do you use self-adaptivity?}
 
 \subsection{Elimination operators}
+We implemented elitism and filled the other spots with the childs. We need to choose the population size and the number of elites in the population.
+
+* some form of elitism (always keep top 5 percent)
+* besides that decide on a strategy
+
 
 \ReplaceMe{Which elimination operators did you consider? If they are not from the slides, describe them. Which one did you implement? Can you motivate why you chose this one? Are there parameters that need to be chosen? What do you think are reasonable parameter values?} 
 
 \subsection{Stopping criterion}
+The algorithm should terminate after a maximum amount of time or when the solution isn't improving anymore. We implemented a stopping criteria where we limit the amount of generations and we terminate the program when the method isn't able to improve for a number of consecutive times. 
+
 
 \ReplaceMe{When do you think the evolutionary algorithm should stop? Which stopping criterion did you implement? Did you combine several criteria?}
 
 \section{Implementation generation \hfill(target: $1$ page)}
 
+
 \subsection{Prompts to generate code}
+
+We wrote a single prompt consisting of the context information and a description of each component of the genetic algorithm. The result was allready pretty good, with a little tweaking the method performed allready pretty well. We inserted another prompt asking a set of new mutations which copilot did implement correctly.
+
 \ReplaceMe{How did you approach the code generation: multiple short prompts to generate individual functions, or did you ask for the whole implementation at once? Which was more efficient? Did you seed Copilot with information before asking it to generate code? What information did you give it? Record the prompts that you used to generate the code. Did you apply some postprocessing to the generated code? What did you do?}
 
 \subsection{Prompts to fix errors}
