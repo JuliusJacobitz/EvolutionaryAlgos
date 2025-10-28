@@ -1,6 +1,7 @@
 import Reporter
 import numpy as np
 import time
+import multiprocessing as mp
 
 # Modify the class name to match your student number.
 class r0123456:
@@ -105,12 +106,12 @@ class r0123456:
         return best_idx
 
     # The evolutionary algorithm's main loop
-    def optimize(self, filename):
+    def optimize(self, filename, seed=42):
         file = open(filename)
         distanceMatrix = np.loadtxt(file, delimiter=",")
         file.close()
 
-        rng = np.random.default_rng(seed=42)
+        rng = np.random.default_rng(seed=seed)
 
         N = distanceMatrix.shape[0]
         rep_size = N - 1
@@ -131,6 +132,7 @@ class r0123456:
         objectives = np.empty(POP_SIZE, dtype=float)
         nodes = np.arange(1, N, dtype=int)
 
+        # Initial population
         for i in range(POP_SIZE):
             attempts = 0
             obj = np.inf
@@ -233,5 +235,13 @@ tour_number = "50"
 filename = f"/Users/julius/Library/CloudStorage/GoogleDrive-juliusjacobitz@gmail.com/My Drive/Studium/Master/07_Semester_Leuven/Genetic Algorithms/CodeGroupPhase/src/data/tour{tour_number}.csv"
 folder = f"/Users/julius/Library/CloudStorage/GoogleDrive-juliusjacobitz@gmail.com/My Drive/Studium/Master/07_Semester_Leuven/Genetic Algorithms/CodeGroupPhase/src/data/output_julius/{tour_number}/"
 
-solver = r0123456(ouptut_file=folder+f"tour_{tour_number}_"+str(int(time.time())).split(".")[0])
-solver.optimize(filename)
+def run_optimization(args):
+    seed, tour_number, filename, folder = args
+    solver = r0123456(ouptut_file=folder+f"tour_{tour_number}_seed{seed}_"+str(int(time.time())).split(".")[0])
+    solver.optimize(filename, seed=seed)
+
+if __name__ == '__main__':
+    args_list = [(seed, tour_number, filename, folder) for seed in range(1, 101)]
+    
+    with mp.Pool(processes=mp.cpu_count()) as pool:
+        pool.map(run_optimization, args_list)
