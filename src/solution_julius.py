@@ -230,8 +230,8 @@ class r0123456:
 
 # Change here
 tour_number = "50"
-filename = f"/Users/julius/Library/CloudStorage/GoogleDrive-juliusjacobitz@gmail.com/My Drive/Studium/Master/07_Semester_Leuven/Genetic Algorithms/CodeGroupPhase/src/data/tour{tour_number}.csv"
-folder = f"/Users/julius/Library/CloudStorage/GoogleDrive-juliusjacobitz@gmail.com/My Drive/Studium/Master/07_Semester_Leuven/Genetic Algorithms/CodeGroupPhase/src/data/output_julius/{tour_number}/"
+filename = f"src/data/output_julius/tour_{tour_number}.csv"
+folder = f"src/data/"
 
 solver = r0123456(ouptut_file=folder+f"tour_{tour_number}_"+str(int(time.time())).split(".")[0])
-solver.optimize(filename)
+solver.optimize(folder+f"tour{tour_number}.csv")
