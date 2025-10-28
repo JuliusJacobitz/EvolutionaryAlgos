@@ -1,32 +1,33 @@
-
 import pandas as pd
-import plotly.graph_objects as go
+import matplotlib.pyplot as plt
 
-# Load the convergence data from the CSV file
+# Load the convergence data
 filename = "r0123456.csv"
-df = pd.read_csv(filename, comment='#')
+df = pd.read_csv(filename, comment="#")
 
-# Extract relevant columns
+# Extract columns
 iterations = df.iloc[:, 0]
 elapsed_time = df.iloc[:, 1]
 mean_objective = df.iloc[:, 2]
 best_objective = df.iloc[:, 3]
 
-# Create the convergence plot
-fig = go.Figure()
-fig.add_trace(go.Scatter(x=iterations, y=mean_objective, mode='lines+markers', name='Mean Objective'))
-fig.add_trace(go.Scatter(x=iterations, y=best_objective, mode='lines+markers', name='Best Objective'))
+# --- Plotting ---
+plt.figure(figsize=(8, 5))
+plt.plot(iterations, mean_objective, 'o-', label='Mean objective', linewidth=1.8, markersize=4)
+plt.plot(iterations, best_objective, 's-', label='Best objective', linewidth=1.8, markersize=4)
 
-fig.update_layout(
-    title="Convergence Graph",
-    xaxis_title="Iteration",
-    yaxis_title="Objective Value",
-    legend_title="Metrics",
-    template="plotly_white"
-)
+plt.title("Convergence Graph", fontsize=13)
+plt.xlabel("Iteration", fontsize=12)
+plt.ylabel("Objective Value", fontsize=12)
+plt.legend()
+plt.grid(True, linestyle='--', alpha=0.6)
+plt.tight_layout()
 
-# Save the plot
-fig.write_image("convergence_graph.png")
-fig.write_json("convergence_graph.json")
+# Optional: log scale if objective spans orders of magnitude
+# plt.yscale('log')
 
-print("Convergence graph saved as 'convergence_graph.png' and 'convergence_graph.json'.")
+# Save figure
+plt.savefig("convergence_graph.png", dpi=300)
+plt.show()
+
+print("Convergence graph saved as 'convergence_graph.png'.")
